@@ -1,5 +1,5 @@
 {
-  "name": "react-native-cos-sdk",
+  "name": "@react-native-ohos/react-native-cos-sdk",
   "version": "1.2.1",
   "description": "Tencent COS XML SDK for React Native",
   "main": "lib/commonjs/index",
@@ -8,19 +8,11 @@
   "react-native": "src/index",
   "source": "src/index",
   "files": [
+    "./harmony/*",
     "src",
     "lib",
-    "android",
-    "ios",
     "cpp",
-    "*.podspec",
     "!lib/typescript/example",
-    "!ios/build",
-    "!android/build",
-    "!android/gradle",
-    "!android/gradlew",
-    "!android/gradlew.bat",
-    "!android/local.properties",
     "!**/__tests__",
     "!**/__fixtures__",
     "!**/__mocks__",
@@ -34,7 +26,8 @@
     "release": "release-it",
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn install && yarn example pods",
-    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build"
+    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build",
+    "codegen-lib": "react-native codegen-lib-harmony --no-safety-check --npm-package-name react-native-cos-sdk --cpp-output-path ./harmony/rn_cos_sdk/src/main/cpp/generated  --ets-output-path ./harmony/rn_cos_sdk/src/main/ets/generated --turbo-modules-spec-paths ./src/NativeRNCosSdk.ts"
   },
   "keywords": [
     "react-native",
@@ -43,18 +36,18 @@
     "COS",
     "Tencent Cloud"
   ],
-  "repository": "https://github.com/TencentCloud/cos-sdk-react-native-plugin",
-  "author": "jordanqin <jordanqin@tencent.com> (https://github.com/TencentCloud/cos-sdk-react-native-plugin)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/TencentCloud/cos-sdk-react-native-plugin/issues"
-  },
   "homepage": "https://cloud.tencent.com/document/product/436/86696",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "harmony": {
+    "alias": "react-native-cos-sdk"    
   },
   "dependencies": {
-    "react-native-uuid": "^2.0.1"
+    "react-native-uuid": "^2.0.1",
+    "react-native-cos-sdk": "1.2.1"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.0.2",

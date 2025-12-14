@@ -1,0 +1,185 @@
+import type { TurboModule } from 'react-native';
+import { TurboModuleRegistry } from 'react-native';
+
+export interface Spec extends TurboModule {
+  initWithPlainSecret(secretId: string, secretKey: string): Promise<void>;
+  initWithSessionCredentialCallback(): Promise<void>;
+  initWithScopeLimitCredentialCallback(): Promise<void>;
+  initCustomerDNS(dnsMap: Array<{
+    domain: string,
+    ips: Array<string>,
+  }>): Promise<void>;
+  initCustomerDNSFetch(): Promise<void>;
+  forceInvalidationCredential(): Promise<void>;
+  setCloseBeacon(isCloseBeacon: boolean): Promise<void>;
+  registerDefaultService(config: {
+    region?: string;
+    connectionTimeout?: number;
+    socketTimeout?: number;
+    isHttps?: boolean;
+    host?: string;
+    hostFormat?: string;
+    port?: number;
+    isDebuggable?: boolean;
+    signInUrl?: boolean;
+    userAgent?: string;
+    dnsCache?: boolean;
+    accelerate?: boolean;
+    domainSwitch?: boolean;
+  }): Promise<Object>;
+  registerDefaultTransferManger(config: {
+    region?: string;
+    connectionTimeout?: number;
+    socketTimeout?: number;
+    isHttps?: boolean;
+    host?: string;
+    hostFormat?: string;
+    port?: number;
+    isDebuggable?: boolean;
+    signInUrl?: boolean;
+    userAgent?: string;
+    dnsCache?: boolean;
+    accelerate?: boolean;
+    domainSwitch?: boolean;
+  }, transferConfig?: {
+    divisionForUpload?: number;
+    sliceSizeForUpload?: number;
+    forceSimpleUpload?: boolean;
+    enableVerification?: boolean;
+  }): Promise<Object>;
+  registerService(key: string, config: {
+    region?: string;
+    connectionTimeout?: number;
+    socketTimeout?: number;
+    isHttps?: boolean;
+    host?: string;
+    hostFormat?: string;
+    port?: number;
+    isDebuggable?: boolean;
+    signInUrl?: boolean;
+    userAgent?: string;
+    dnsCache?: boolean;
+    accelerate?: boolean;
+    domainSwitch?: boolean;
+  }): Promise<Object>;
+  registerTransferManger(key: string, config: {
+    region?: string;
+    connectionTimeout?: number;
+    socketTimeout?: number;
+    isHttps?: boolean;
+    host?: string;
+    hostFormat?: string;
+    port?: number;
+    isDebuggable?: boolean;
+    signInUrl?: boolean;
+    userAgent?: string;
+    dnsCache?: boolean;
+    accelerate?: boolean;
+    domainSwitch?: boolean;
+  }, transferConfig?: {
+    divisionForUpload?: number;
+    sliceSizeForUpload?: number;
+    forceSimpleUpload?: boolean;
+    enableVerification?: boolean;
+  }): Promise<Object>;
+
+  enableLogcat(enable: boolean): Promise<void>;
+  enableLogFile(enable: boolean): Promise<void>;
+  addLogListener(key: string): Promise<void>;
+  removeLogListener(key: string): Promise<void>;
+  setMinLevel(minLevel: number): Promise<void>;
+  setLogcatMinLevel(minLevel: number): Promise<void>;
+  setFileMinLevel(minLevel: number): Promise<void>;
+  setClsMinLevel(minLevel: number): Promise<void>;
+  setDeviceID(deviceID: string): Promise<void>;
+  setDeviceModel(deviceModel: string): Promise<void>;
+  setAppVersion(appVersion: string): Promise<void>;
+  setExtras(extras: Object): Promise<void>;
+  setLogFileEncryptionKey(key: Object, iv: Object): Promise<void>;
+  setCLsChannelAnonymous(topicId: string, endpoint: string): Promise<void>;
+  setCLsChannelStaticKey(topicId: string, endpoint: string, secretId: string, secretKey: string): Promise<void>;
+  setCLsChannelSessionCredential(topicId: string, endpoint: string): Promise<void>;
+  addSensitiveRule(ruleName: string, regex: string): Promise<void>;
+  removeSensitiveRule(ruleName: string): Promise<void>;
+  getLogRootDir(): Promise<string>;
+
+  updateSessionCredential(credentials: Object, scopesArray: string | null): Promise<void>;
+  setDNSFetchIps(domain: string, ips: string[] | null): Promise<void>;
+  updateCLsChannelSessionCredential(credential: Object): Promise<void>;
+  addListener(eventName: string): void;
+  removeListeners(count: number): void;
+
+  upload(
+    transferKey: string,
+    bucket: string,
+    cosPath: string,
+    fileUri: string,
+    uploadId: string,
+    resultCallbackKey: string,
+    stateCallbackKey: string,
+    progressCallbackKey: string,
+    InitMultipleUploadCallbackKey: string,
+    stroageClass: string,
+    trafficLimit: string,
+    region: string,
+    credentials: Object
+  ): Promise<void>;
+
+  download(
+    transferKey: string,
+    bucket: string,
+    cosPath: string,
+    savePath: string,
+    resultCallbackKey: string,
+    stateCallbackKey: string,
+    progressCallbackKey: string,
+    versionId: string,
+    trafficLimit: string,
+    region: string,
+    credentials: Object
+  ): Promise<void>;
+
+  pause(transferKey: string, taskId: string): Promise<void>;
+  resume(transferKey: string, taskId: string): Promise<void>;
+  cancel(transferKey: string, taskId: string): Promise<void>;
+
+  getObjectUrl(serviceKey: string, bucket: string, cosPath: string, region: string): Promise<string>;
+
+  getPresignedUrl(
+    serviceKey: string,
+    bucket: string,
+    cosPath: string,
+    signValidTime: string,
+    signHost: string,
+    parameters: Object,
+    region: string,
+    credentials: Object
+  ): Promise<string>;
+
+  headObject(serviceKey: string,
+    bucket: string,
+    cosPath: string,
+    region?: string,
+    versionId?: string,
+    credentials?: Object): Promise<Object>;
+
+  deleteObject(serviceKey: string, bucket: string, cosPath: string, region?: string,
+    versionId?: string, credentials?: Object): Promise<void>;
+
+  preBuildConnection(serviceKey: string, bucket: string): Promise<void>;
+  getService(serviceKey: string, credentials: Object): Promise<void>;
+  getBucket(serviceKey: string, bucket: string, region: string, prefix: string, delimiter: string, encodingType: string, marker: string, maxKeys: string, credentials: Object): Promise<Object /*BucketContents*/>;
+  putBucket(serviceKey: string, bucket: string, region: string, enableMAZ: string, cosacl: string, readAccount: string, writeAccount: string, readWriteAccount: string, credentials: Object): Promise<Object /*BucketContents*/>;
+  headBucket(serviceKey: string, bucket: string, region?: string, credentials?: Object): Promise<Object>;
+  deleteBucket(serviceKey: string, bucket: string, region?: string, credentials?: Object): Promise<void>;
+  getBucketAccelerate(serviceKey: string, bucket: string, region?: string, credentials?: Object): Promise<boolean>;
+  putBucketAccelerate(serviceKey: string, bucket: string, enable: boolean, region?: string, credentials?: Object): Promise<void>;
+  getBucketVersioning(serviceKey: string, bucket: string, region?: string, credentials?: Object): Promise<boolean>;
+  putBucketVersioning(serviceKey: string, bucket: string, enable: boolean, region?: string, credentials?: Object): Promise<void>;
+  getBucketLocation(serviceKey: string, bucket: string, region?: string, credentials?: Object): Promise<string>;
+  doesBucketExist(serviceKey: string, bucket: string): Promise<boolean>;
+  doesObjectExist(serviceKey: string, bucket: string, cosPath: string): Promise<boolean>;
+  cancelAll(serviceKey: string): Promise<void>;
+}
+
+export default TurboModuleRegistry.getEnforcing<Spec>("QCloudCosReactNative");
