@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<oatconfig>
+	<licensefile>LICENSE</licensefile>
+		<filefilterlist>
+			<filefilter name="copyrightPolicyFilter" desc="Filters for compatibility，license header policies">
+				<filteritem type="filename" name="hvigorfile.ts" desc="hvigor构建脚本，DevEco Studio自动生成，不需要添加版权头"/>
+				<filteritem type="filename" name="*.json5" desc="hvigor工程配置文件，DevEco Studio自动生成，不需要添加版权头"/>
+				<filteritem type="filename" name="*.json" desc="资源文件，不需要添加版权头"/>
+				<filteritem type="filepath" name="hvigorw" desc="工程模板，不修改版权头，以防有修改版权风险"/>
+				<filteritem type="filename" name="hvigorw.bat" desc="工程模板，不修改版权头，以防有修改版权风险"/>
+				<filteritem type="filename" name="hvigor-wrapper.js" desc="工程模板，不修改版权头，以防有修改版权风险"/>
+				<filteritem type="filename" name=".eslintrc" desc="工程模板，不修改版权头，以防有修改版权风险"/>
+				<filteritem type="filename" name="BuildProfile.ets" desc="工程模板，不修改版权头，以防有修改版权风险"/>
+                <filteritem type="filename" name="LICENSE" desc="原三方库证书文件无需更改，因此添加过滤"/>
+
+				<filteritem type="filename" name="Utils.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="Constant.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="App.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="scope_credentials.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="UploadScreen.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="index.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="TransferProgressView.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="App.test.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="DownloadScreen.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="metro.config.js" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="cos_service.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="babel.config.js" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="ObjectEntity.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="bjectEntity.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name=".watchmanconfig" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name=".ruby-version" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="errors.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name=".nycrc" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="enums.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="config.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="credentials.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name=".node-version" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="events.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="parameters.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="BucketAddScreen.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="BucketListScreen.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="RegionListScreen.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="bootstrap.js" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="ObjectListScreen.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="TestScreen.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="jest.config.js" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="jest.config.js" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="cos_transfer.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="index.js" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filepath" name="harmony/rn_cos_sdk/src/main/cpp/generated/*.*" desc="生成的桥接代码，因此添加过滤"/>
+				<filteritem type="filepath" name="harmony/rn_cos_sdk/src/main/ets/generated/*.*" desc="生成的桥接代码，因此添加过滤"/>
+			</filefilter>
+			<filefilter name="defaultPolicyFilter" desc="Filters for compatibility，license header policies">
+				<filteritem type="filename" name="hvigorfile.ts" desc="hvigor构建脚本，DevEco Studio自动生成，不需要添加许可证头"/>
+				<filteritem type="filename" name="*.json5" desc="hvigor工程配置文件，DevEco Studio自动生成，不需要添加许可证头"/>
+				<filteritem type="filename" name="LICENSE" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="*.proto" desc="资源文件，不需要添加许可证头"/>
+				<filteritem type="filename" name="*.json" desc="资源文件，不需要添加许可证头"/>
+				<filteritem type="filename" name=".eslintrc" desc="工程模板，不修改版权头，以防有修改版权风险"/>
+				<filteritem type="filepath" name="hvigorw" desc="工程模板，不修改版权头，以防有修改版权风险"/>
+				<filteritem type="filename" name="hvigorw.bat" desc="工程模板，不修改版权头，以防有修改版权风险"/>
+				<filteritem type="filename" name="hvigor-wrapper.js" desc="工程模板，不修改版权头，以防有修改版权风险"/>
+				<filteritem type="filename" name="BuildProfile.ets" desc="工程模板，不修改版权头，以防有修改版权风险"/>
+
+				<filteritem type="filename" name="Utils.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="Constant.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="App.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="scope_credentials.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="UploadScreen.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="index.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="TransferProgressView.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="App.test.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="DownloadScreen.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="metro.config.js" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="cos_service.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="babel.config.js" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="ObjectEntity.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="bjectEntity.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name=".watchmanconfig" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name=".ruby-version" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="errors.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name=".nycrc" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="enums.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="config.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="credentials.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name=".node-version" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="events.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="parameters.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="BucketAddScreen.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="BucketListScreen.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="RegionListScreen.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="bootstrap.js" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="ObjectListScreen.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="TestScreen.tsx" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="jest.config.js" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="jest.config.js" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="cos_transfer.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="index.js" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filepath" name="harmony/rn_cos_sdk/src/main/cpp/generated/*.*" desc="生成的桥接代码，因此添加过滤"/>
+				<filteritem type="filepath" name="harmony/rn_cos_sdk/src/main/ets/generated/*.*" desc="生成的桥接代码，因此添加过滤"/>
+			</filefilter>
+			<filefilter name="binaryFileTypePolicyFilter" desc="Filters for resources files policies">
+				<filteritem type="filename" name="rn_cos_sdk.har" desc="版本包"/>
+				<filteritem type="filename" name="gradle-wrapper.jar" desc="工程文件"/>
+				<filteritem type="filename" name="log.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="object.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="Gemfile" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="owner.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="bucket.ts" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="example" desc="原三方库证书文件无需更改，因此添加过滤"/>
+				<filteritem type="filename" name="Logger.ets" desc="原三方库证书文件无需更改，因此添加过滤"/>
+			</filefilter>
+		</filefilterlist>
+        <policylist>
+            <policy name="projectPolicy" desc="">
+                <policyitem type="license" name="MIT" path=".*" desc="license under the MIT"/>
+            </policy>
+        </policylist>
+	</oatconfig>
+</configuration>

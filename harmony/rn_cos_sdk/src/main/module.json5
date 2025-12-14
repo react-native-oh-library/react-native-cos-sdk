@@ -1,0 +1,11 @@
+{
+  "module": {
+    "name": "rn_cos_sdk",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet",
+      "2in1"
+    ]
+  }
+}

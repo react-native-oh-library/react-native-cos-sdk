@@ -1,0 +1,11 @@
+[
+    {
+        "Name": "react-native-cos-sdk",
+        "License": "MIT License",
+        "License File": "LICENSE",
+        "Version Number": "1.2.1",
+        "Owner" : "xiafeng@huawei.com",
+        "Upstream URL": "https://github.com/TencentCloud/cos-sdk-react-native-plugin",
+        "Description": "Tencent COS XML SDK for React Native."
+    }
+]

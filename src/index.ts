@@ -1,4 +1,5 @@
-import { NativeModules, Platform, NativeEventEmitter } from 'react-native';
+import { NativeEventEmitter } from 'react-native';
+import QCloudCosReactNative from './NativeRNCosSdk';
 import { CosService } from './cos_service';
 import { CosTransferManger } from './cos_transfer';
 import { ScopeLimitCredentialsProvider } from './credentials/scope_credentials';
@@ -8,35 +9,6 @@ import type { SessionQCloudCredentials, STSCredentialScope } from './data_model/
 import { IllegalArgumentError } from './data_model/errors';
 import type { DnsMapParameters } from './data_model/parameters';
 import type { LogEntity, LogLevel } from './data_model/log';
-
-const LINKING_ERROR =
-  `The package 'react-native-cos-sdk' doesn't seem to be linked. Make sure: \n\n` +
-  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
-  '- You rebuilt the app after installing the package\n' +
-  '- You are not using Expo Go\n';
-
-const QCloudCosReactNative = NativeModules.QCloudCosReactNative
-  ? NativeModules.QCloudCosReactNative
-  : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
-
-const CosEventEmitter = NativeModules.CosEventEmitter
-? NativeModules.CosEventEmitter
-: new Proxy(
-    {},
-    {
-      get() {
-        throw new Error(LINKING_ERROR);
-      },
-    }
-  );
-
 
 const DEFAULT_KEY = "";
 
@@ -56,14 +28,7 @@ class Cos {
     this.scopeLimitCredentialsProvider = new ScopeLimitCredentialsProvider();
 
     this.logListeners = new Map()
-
-    if(Platform.OS === 'ios'){
-      this.emitter = new NativeEventEmitter(CosEventEmitter);
-    } else if(Platform.OS === 'android') {
-      this.emitter = new NativeEventEmitter(QCloudCosReactNative);
-    } else {
-      this.emitter = new NativeEventEmitter();
-    }
+    this.emitter = new NativeEventEmitter(QCloudCosReactNative);
 
     this.emitter.addListener(COS_EMITTER_RESULT_SUCCESS_CALLBACK, (event: TransferResultSuccessEvent) => {
       this.getTransferManger(event.transferKey).runResultSuccessCallBack(event.callbackKey, event.headers);
@@ -101,7 +66,7 @@ class Cos {
       this.initialized = true
       this.emitter.addListener(COS_EMITTER_UPDATE_SESSION_CREDENTIAL, async () => {
         const credential = await callback()
-        if(credential){
+        if (credential) {
           QCloudCosReactNative.updateSessionCredential(credential, null)
         }
       });
@@ -112,14 +77,14 @@ class Cos {
     }
   }
 
-  initWithScopeLimitCredentialCallback(callback: (stsScopesArray:Array<STSCredentialScope>) => Promise<SessionQCloudCredentials | null>): Promise<void> | undefined {
+  initWithScopeLimitCredentialCallback(callback: (stsScopesArray: Array<STSCredentialScope>) => Promise<SessionQCloudCredentials | null>): Promise<void> | undefined {
     if (!this.initialized) {
       this.initialized = true
       this.emitter.addListener(COS_EMITTER_UPDATE_SESSION_CREDENTIAL, async (event: UpdateSessionCredentialEvent) => {
         console.log(event.stsScopesArrayJson);
-        if(event.stsScopesArrayJson){
+        if (event.stsScopesArrayJson) {
           const credential = await this.scopeLimitCredentialsProvider.fetchScopeLimitCredentials(event.stsScopesArrayJson, callback);
-          if(credential){
+          if (credential) {
             QCloudCosReactNative.updateSessionCredential(credential, event.stsScopesArrayJson)
           }
         }
@@ -146,28 +111,28 @@ class Cos {
     return QCloudCosReactNative.initCustomerDNSFetch();
   }
 
-  forceInvalidationCredential(): Promise<void>{
+  forceInvalidationCredential(): Promise<void> {
     this.scopeLimitCredentialsProvider.forceInvalidationScopeCredentials();
     return QCloudCosReactNative.forceInvalidationCredential();
   }
 
-  setCloseBeacon(isCloseBeacon: boolean): Promise<void>{
+  setCloseBeacon(isCloseBeacon: boolean): Promise<void> {
     return QCloudCosReactNative.setCloseBeacon(isCloseBeacon)
   }
 
-  async registerDefaultService(config: CosXmlServiceConfig): Promise<CosService>{
+  async registerDefaultService(config: CosXmlServiceConfig): Promise<CosService> {
     await QCloudCosReactNative.registerDefaultService(config)
     let cosService = new CosService(DEFAULT_KEY, QCloudCosReactNative);
     this.cosServices.set(DEFAULT_KEY, cosService)
     return cosService;
   }
-  async registerDefaultTransferManger(config: CosXmlServiceConfig, transferConfig?: TransferConfig): Promise<CosTransferManger>{
+  async registerDefaultTransferManger(config: CosXmlServiceConfig, transferConfig?: TransferConfig): Promise<CosTransferManger> {
     await QCloudCosReactNative.registerDefaultTransferManger(config, transferConfig)
     let cosTransfer = new CosTransferManger(DEFAULT_KEY, QCloudCosReactNative);
     this.cosTransfers.set(DEFAULT_KEY, cosTransfer)
     return cosTransfer;
   }
-  async registerService(key: string, config: CosXmlServiceConfig): Promise<CosService>{
+  async registerService(key: string, config: CosXmlServiceConfig): Promise<CosService> {
     if (key == DEFAULT_KEY) {
       throw new IllegalArgumentError("register key cannot be empty");
     }
@@ -177,7 +142,7 @@ class Cos {
     this.cosServices.set(key, cosService)
     return cosService;
   }
-  async registerTransferManger(key: string, config: CosXmlServiceConfig, transferConfig?: TransferConfig): Promise<CosTransferManger>{
+  async registerTransferManger(key: string, config: CosXmlServiceConfig, transferConfig?: TransferConfig): Promise<CosTransferManger> {
     if (key == DEFAULT_KEY) {
       throw new IllegalArgumentError("register key cannot be empty");
     }
@@ -192,7 +157,7 @@ class Cos {
   }
 
   getDefaultService(): CosService {
-    if(this.cosServices.has(DEFAULT_KEY)){
+    if (this.cosServices.has(DEFAULT_KEY)) {
       return this.cosServices.get(DEFAULT_KEY)!;
     } else {
       throw new IllegalArgumentError("default service unregistered");
@@ -204,7 +169,7 @@ class Cos {
   }
 
   getDefaultTransferManger(): CosTransferManger {
-    if(this.cosTransfers.has(DEFAULT_KEY)){
+    if (this.cosTransfers.has(DEFAULT_KEY)) {
       return this.cosTransfers.get(DEFAULT_KEY)!;
     } else {
       throw new IllegalArgumentError("default transfer manger unregistered");
@@ -216,7 +181,7 @@ class Cos {
   }
 
   getService(key: string): CosService {
-    if(this.cosServices.has(key)){
+    if (this.cosServices.has(key)) {
       return this.cosServices.get(key)!;
     } else {
       throw new IllegalArgumentError(`${key} service unregistered`);
@@ -228,7 +193,7 @@ class Cos {
   }
 
   getTransferManger(key: string): CosTransferManger {
-    if(this.cosTransfers.has(key)){
+    if (this.cosTransfers.has(key)) {
       return this.cosTransfers.get(key)!;
     } else {
       throw new IllegalArgumentError(`${key} transfer manger unregistered`);
@@ -318,11 +283,11 @@ class Cos {
   setCLsChannelSessionCredential(topicId: string, endpoint: string, callback: () => Promise<SessionQCloudCredentials | null>): Promise<void> {
     this.emitter.addListener(COS_EMITTER_UPDATE_CLS_SESSION_CREDENTIAL, async () => {
       const credential = await callback()
-      if(credential){
+      if (credential) {
         QCloudCosReactNative.updateCLsChannelSessionCredential(credential)
       }
     });
-    return QCloudCosReactNative.setCLsChannelSessionCredential(topicId, endpoint);
+    return QCloudCosReactNative.setCLsChannelSessionCredential(topicId, endpoint);    
   }
 
   /// 添加敏感信息过滤规则
@@ -336,7 +301,7 @@ class Cos {
   }
 
   getLogRootDir(): Promise<string> {
-     return QCloudCosReactNative.getLogRootDir();
+    return QCloudCosReactNative.getLogRootDir();
   }
 
 }

@@ -1,0 +1,14 @@
+{
+  "license": "MIT",
+  "devDependencies": {
+  },
+  "author": "",
+  "name": "@react-native-ohos/react-native-cos-sdk",
+  "description": "Tencent COS XML SDK for React Native.",
+  "main": "ts.ets",
+  "version": "1.2.2-rc.1",
+  "dependencies": {
+    "@rnoh/react-native-openharmony": "^0.72.32",
+    "@tencentcloud/cos": "1.2.1"
+  }
+}
