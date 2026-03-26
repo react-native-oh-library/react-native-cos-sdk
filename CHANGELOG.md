@@ -1,3 +1,6 @@
+## 1.2.2
+
+- Release official version 1.2.2.
 
 ## 1.2.2-rc.1
 
