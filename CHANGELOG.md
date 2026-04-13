@@ -1,3 +1,7 @@
+## 1.2.2-1
+
+- Release official version 1.2.2-1.
+
 ## 1.2.2
 
 - Release official version 1.2.2.
