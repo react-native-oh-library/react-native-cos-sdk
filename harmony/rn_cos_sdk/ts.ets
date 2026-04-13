@@ -22,4 +22,4 @@
  * SOFTWARE.
  */
 
-export * from "./src/main/ets/RNCosSdKPackage"
+export * from "./src/main/ets/RNCosSdkPackage"
